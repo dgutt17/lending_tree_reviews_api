@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+
+development:
+  <<: *default
+  database: lending_tree_reviews_api_dev
+
+test:
+  <<: *default
+  database: lending_tree_reviews_api_test
+
+production:
+  <<: *default
+  database: lending_tree_reviews_api_production
+  username: lending_tree_reviews_api
+  password: <%= ENV['LENDING_TREE_REVIEWS_API_DATABASE_PASSWORD'] %>
