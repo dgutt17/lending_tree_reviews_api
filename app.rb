@@ -1,5 +1,3 @@
-require 'sinatra'
-
 require_relative 'app/controllers/application_controller.rb'
 require_relative 'app/controllers/reviews_controller.rb'
 require_relative 'app/models/business.rb'
