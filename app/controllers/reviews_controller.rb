@@ -8,23 +8,6 @@ class ReviewsController < ApplicationController
 
   private 
 
-  def business_name
-    @business_name ||= begin
-      name_and_id = params['url'].split('/reviews/business/').last
-      name = name_and_id.split('/').first
-
-      name
-    end
-  end
-
-  def business
-    @business ||= Business.find_by(name: business_name)
-  end
-
-  def get_brand_id_from_html
-    BrandIdGetter.new(params['url']).run
-  end
-
   def set_brand_id
     if business.nil?
       @brand_id = get_brand_id_from_html
@@ -34,13 +17,31 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def lending_tree_api_wrapper
-    LendingTreeApiWrapper.new(@brand_id)
+  def business
+    @business ||= Business.find_by(name: business_name)
+  end
+
+  def business_name
+    @business_name ||= begin
+      name_and_id = params['url'].split('/reviews/business/').last
+      name = name_and_id.split('/').first
+
+      name
+    end
+  end
+
+  def get_brand_id_from_html
+    BrandIdGetter.new(params['url']).run
   end
 
   def cache_brand_id
     Business.create!(name: business_name, brand_id: @brand_id)
   end
+
+  def lending_tree_api_wrapper
+    LendingTreeApiWrapper.new(@brand_id)
+  end
+
 
   def parse_reviews(response)
     ReviewsParser.new(response).run
