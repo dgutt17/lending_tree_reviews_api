@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_220249) do
 
   create_table "businesses", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "integer", null: false
+    t.string "brand_id", null: false
     t.index ["name"], name: "index_businesses_on_name"
   end
 
