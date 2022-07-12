@@ -1,10 +1,13 @@
-require 'uri'
 require './lib/brand_id_getter.rb'
 require './lib/lending_tree_api_wrapper.rb'
+require './lib/reviews_parser.rb'
+
 class ReviewsController < ApplicationController
   get '/fetch_reviews_by_business_url/' do 
     set_brand_id
-    @response = lending_tree_api_wrapper.run
+    response = lending_tree_api_wrapper.run
+
+    parse_reviews(response)
   end
 
   private 
@@ -41,5 +44,9 @@ class ReviewsController < ApplicationController
 
   def cache_brand_id
     Business.create!(name: business_name, brand_id: @brand_id)
+  end
+
+  def parse_reviews(response)
+    ReviewsParser.new(response).run
   end
 end
