@@ -1,5 +1,4 @@
 class LendingTreeApiWrapper
-  include HTTParty
   attr_reader :url, :headers
   X_WP_NONCE = '5f4167b4b4'
 
@@ -9,7 +8,7 @@ class LendingTreeApiWrapper
   end
 
   def run
-    response = get(url, :headers => headers)
+    response = HTTParty.get(url, :headers => headers)
   end
 
   private

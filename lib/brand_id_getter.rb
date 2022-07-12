@@ -4,7 +4,7 @@ class BrandIdGetter
   attr_reader :url
 
   BRAND_ID_CSS = '.writeReview button'
-  BRAND_ID_ATTRIBUTE_NAME = 'lenderreviewid'
+  BRAND_ID_ATTRIBUTE_NAME = 'data-lenderreviewid'
 
   def initialize(url)
     @url = url
