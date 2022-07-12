@@ -1,7 +1,3 @@
-require './lib/brand_id_getter.rb'
-require './lib/lending_tree_api_wrapper.rb'
-require './lib/reviews_parser.rb'
-
 class ReviewsController < ApplicationController
   get '/fetch_reviews_by_business_url/' do 
     set_brand_id
