@@ -8,3 +8,4 @@ gem "pry-byebug", groups: [:development, :test]
 gem "racksh"
 gem "httparty"
 gem "nokogiri"
+gem "redis"

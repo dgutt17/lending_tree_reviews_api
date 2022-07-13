@@ -15,6 +15,6 @@ test:
 
 production:
   <<: *default
-  database: lending_tree_reviews_api_production
-  username: lending_tree_reviews_api
-  password: <%= ENV['LENDING_TREE_REVIEWS_API_DATABASE_PASSWORD'] %>
+  database: lending_tree_reviews_api_dev
+  # username: lending_tree_reviews_api
+  # password: <%= ENV['LENDING_TREE_REVIEWS_API_DATABASE_PASSWORD'] %>
