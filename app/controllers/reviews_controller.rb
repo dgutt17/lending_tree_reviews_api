@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
   end
 
   def business_name_from_url
-    @business_name_from_url ||= BusinessNameGetter.call(params['url'])
+    @business_name_from_url ||= BusinessNameGetter.new(params['url']).call
   end
 
   def get_brand_id_from_html
@@ -38,6 +38,6 @@ class ReviewsController < ApplicationController
   end
 
   def parse_reviews(response)
-    ReviewsParser.call(response)
+    ReviewsParser.new(response).call
   end
 end

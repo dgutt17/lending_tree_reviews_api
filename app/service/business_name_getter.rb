@@ -1,4 +1,4 @@
-class BusinessNameGetter < ApplicationService
+class BusinessNameGetter
   attr_reader :url
 
   def initialize(url)
