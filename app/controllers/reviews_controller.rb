@@ -31,7 +31,7 @@ class ReviewsController < ApplicationController
   end
 
   def get_brand_id_from_html
-    BrandIdGetter.new(params['url']).run
+    LendingTree::BrandIdGetter.new(params['url']).run
   end
 
   def cache_brand_id
@@ -39,7 +39,7 @@ class ReviewsController < ApplicationController
   end
 
   def lending_tree_api_wrapper
-    LendingTreeApiWrapper.new(@brand_id)
+    LendingTree::ApiWrapper.new(@brand_id)
   end
 
   def parse_reviews(response)
