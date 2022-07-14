@@ -10,7 +10,7 @@ module LendingTree
       @brand_id_attribute_name = ENV['BRAND_ID_ATTRIBUTE_NAME']
     end
 
-    def run 
+    def call 
       parse_brand_id
     end
 

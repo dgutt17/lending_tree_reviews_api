@@ -14,7 +14,7 @@ module LendingTree
       @redis = Redis.new
     end
 
-    def run
+    def call
       hash = nil
       document.css(NONCE_ID_CSS).first.children.first.to_s.split().each do |char| 
         hash = JSON.parse(char[0..char.length - 2]) if char.include?('nonce')

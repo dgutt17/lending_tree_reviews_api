@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   get '/fetch_reviews_by_business_url/' do 
     set_brand_id
-    response = lending_tree_api_wrapper.run
+    response = lending_tree_api_wrapper.call
 
     parse_reviews(response)
   end
@@ -18,24 +18,19 @@ class ReviewsController < ApplicationController
   end
 
   def business
-    @business ||= Business.find_by(name: business_name)
+    @business ||= Business.find_by(name: business_name_from_url)
   end
 
-  def business_name
-    @business_name ||= begin
-      name_and_id = params['url'].split('/reviews/business/').last
-      name = name_and_id.split('/').first
-
-      name
-    end
+  def business_name_from_url
+    @business_name_from_url ||= BusinessNameGetter.call(params['url'])
   end
 
   def get_brand_id_from_html
-    LendingTree::BrandIdGetter.new(params['url']).run
+    LendingTree::BrandIdGetter.new(params['url']).call
   end
 
   def cache_brand_id
-    Business.create!(name: business_name, brand_id: @brand_id)
+    Business.create!(name: business_name_from_url, brand_id: @brand_id)
   end
 
   def lending_tree_api_wrapper
@@ -43,6 +38,6 @@ class ReviewsController < ApplicationController
   end
 
   def parse_reviews(response)
-    ReviewsParser.new(response).run
+    ReviewsParser.call(response)
   end
 end

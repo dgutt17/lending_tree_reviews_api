@@ -11,7 +11,7 @@ module LendingTree
       @headers = {'X-WP-Nonce': nonce}
     end
 
-    def run
+    def call
       response = HTTParty.get(url, :headers => headers)
     end
 

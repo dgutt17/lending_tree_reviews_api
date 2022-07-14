@@ -1,11 +1,11 @@
-class ReviewsParser
+class ReviewsParser < ApplicationService
   attr_reader :response
 
   def initialize(response)
     @response = JSON.parse(response)
   end
 
-  def run
+  def call
     reviews.map { |review| parse_review(review) }.to_json
   end
 
