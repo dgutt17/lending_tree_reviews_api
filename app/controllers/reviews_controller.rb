@@ -42,7 +42,6 @@ class ReviewsController < ApplicationController
     LendingTreeApiWrapper.new(@brand_id)
   end
 
-
   def parse_reviews(response)
     ReviewsParser.new(response).run
   end
