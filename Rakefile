@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'sinatra/activerecord/rake'
 require 'redis'
 Dir[File.join(".", "/app/**/*.rb")].each {|f| require f}
 Dir[File.join(".", "/lib/**/*.rb")].each {|f| require f}
