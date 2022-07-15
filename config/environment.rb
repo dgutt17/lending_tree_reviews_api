@@ -3,7 +3,6 @@ require 'bundler'
 require 'sinatra'
 require 'redis'
 require 'sinatra/activerecord'
-require 'sinatra/activerecord/rake'
 require 'open-uri'
 require 'nokogiri'
 
