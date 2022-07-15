@@ -10,12 +10,7 @@ module LendingTree
     end
 
     def call
-      hash = nil
-      document.css(NONCE_ID_CSS).first.children.first.to_s.split().each do |char| 
-        hash = JSON.parse(char[0..char.length - 2]) if char.include?('nonce')
-      end
-
-      redis.set(NONCE_KEY, hash['nonce'])
+      redis.set(NONCE_KEY, nonce_object['nonce'])
 
       redis.close
     end
@@ -24,6 +19,17 @@ module LendingTree
 
     def document
       @document ||= Nokogiri::HTML(URI.open(LENDING_TREE_BUSINESS_REVIEWS_URL))
+    end
+
+    def nonce_object
+      @nonce_object ||= begin
+        hash = nil
+        document.css(NONCE_ID_CSS).first.children.first.to_s.split.each do |char| 
+          hash = JSON.parse(char[0..char.length - 2]) if char.include?('nonce')
+        end
+
+        hash
+      end
     end
   end
 end
