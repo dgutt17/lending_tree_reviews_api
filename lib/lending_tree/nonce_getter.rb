@@ -1,7 +1,3 @@
-require 'open-uri'
-require 'nokogiri'
-require 'redis'
-
 module LendingTree
   class NonceGetter
     attr_reader :redis

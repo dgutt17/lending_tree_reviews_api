@@ -1,5 +1,3 @@
-require 'redis'
-
 module LendingTree
   class ApiWrapper
     attr_reader :url, :headers

@@ -1,5 +1,11 @@
-require "rubygems"
-require "bundler"
+require 'rubygems'
+require 'bundler'
+require 'sinatra'
+require 'redis'
+require 'sinatra/activerecord'
+require 'sinatra/activerecord/rake'
+require 'open-uri'
+require 'nokogiri'
 
 Bundler.require(:default)                   # load all the default gems
 Bundler.require(Sinatra::Base.environment)  # load all the environment specific gems

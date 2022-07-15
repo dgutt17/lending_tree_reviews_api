@@ -1,5 +1,3 @@
-require 'open-uri'
-
 module LendingTree
   class BrandIdGetter
     attr_reader :url, :brand_id_css, :brand_id_attribute_name
