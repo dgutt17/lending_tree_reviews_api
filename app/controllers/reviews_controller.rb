@@ -22,7 +22,12 @@ class ReviewsController < ApplicationController
   end
 
   def business_name_from_url
-    @business_name_from_url ||= BusinessNameGetter.new(params['url']).call
+    @business_name_from_url ||= begin
+      name_and_id = params['url'].split('/reviews/business/').last
+      name = name_and_id.split('/').first
+
+      name
+    end
   end
 
   def get_brand_id_from_html
