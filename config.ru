@@ -1,7 +1,4 @@
-require 'bundler'
-require 'rubygems'
-
-Bundler.require
-
+require './config/environment.rb'
 require './app'
+
 run App
