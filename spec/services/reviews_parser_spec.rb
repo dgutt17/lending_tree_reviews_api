@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe ReviewsParser, type: :service do
-  let(:response_json) { File.read('spec/fixtures/api_response_hash.json') }
+  let(:response_json) { File.read('spec/fixtures/api_response.json') }
   let(:reviews) { ReviewsParser.new(response_json).call }
 
   before do 

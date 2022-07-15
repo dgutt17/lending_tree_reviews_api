@@ -1,16 +1,17 @@
 module LendingTree
   class ApiWrapper
-    attr_reader :url, :headers
+    attr_reader :url
 
     NONCE_KEY = 'nonce'
 
     def initialize(brand_id)
       @url = create_url(brand_id)
-      @headers = {'X-WP-Nonce': nonce}
     end
 
     def call
-      response = HTTParty.get(url, :headers => headers)
+      response = http_request
+
+      response
     end
 
     private
@@ -21,6 +22,14 @@ module LendingTree
 
     def nonce
       @nonce ||= redis.get(NONCE_KEY)
+    end
+
+    def http_request
+      HTTParty.get(url, :headers => headers)
+    end
+
+    def headers
+      @headers ||= {'X-WP-Nonce': nonce}
     end
 
     def redis
