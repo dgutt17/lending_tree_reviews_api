@@ -1,10 +1,9 @@
 module LendingTree
-  class NonceGetter
+  class NonceGetter < Base
     attr_reader :redis
 
     LENDING_TREE_BUSINESS_REVIEWS_URL = 'https://www.lendingtree.com/reviews/business'
     NONCE_ID_CSS = '#jquery-core-js-extra'
-    NONCE_KEY = 'nonce'
 
     def initialize
       @redis = Redis.new

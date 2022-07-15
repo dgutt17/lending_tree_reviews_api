@@ -1,8 +1,6 @@
 module LendingTree
-  class ApiWrapper
+  class ApiWrapper < Base
     attr_reader :url
-
-    NONCE_KEY = 'nonce'
 
     def initialize(brand_id)
       @url = create_url(brand_id)

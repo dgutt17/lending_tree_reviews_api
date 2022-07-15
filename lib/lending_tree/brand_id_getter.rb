@@ -1,5 +1,5 @@
 module LendingTree
-  class BrandIdGetter
+  class BrandIdGetter < Base
     attr_reader :url, :brand_id_css, :brand_id_attribute_name
 
     BRAND_ID_CSS = '.writeReview button'
