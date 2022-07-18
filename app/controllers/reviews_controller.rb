@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
   set :show_exceptions, false
 
   get '/fetch_reviews_by_business_url/' do 
+    app_logger.info("#{env['REQUEST_METHOD']} #{env['REQUEST_PATH']}, params: #{params}")
     if valid_url_param
       set_brand_id
       response = lending_tree_api_wrapper.call
