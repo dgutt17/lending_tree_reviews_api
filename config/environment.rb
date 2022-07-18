@@ -17,3 +17,5 @@ Dir[File.join(".", "/lib/**/*.rb")].each {|f| require f}
 
 require "active_support/deprecation"
 require "active_support/all"
+
+ActiveRecord::Base.logger = Logger.new(LoggerHelper::STDOUT)
