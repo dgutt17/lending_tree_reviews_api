@@ -7,6 +7,10 @@ class ApplicationController < Sinatra::Base
     'Home Page'
   end
   
+  error ActiveRecord::RecordInvalid do
+    error_logger.debug("error class: #{env['sinatra.error'].class}, error message: #{env['sinatra.error'].message}")
+    error 400, env['sinatra.error'].message
+  end
   error do
     error_logger.debug("error class: #{env['sinatra.error'].class}, error message: #{env['sinatra.error'].message}")
     error 500, 'An unexpected error occurred on our servers.'
