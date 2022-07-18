@@ -5,6 +5,7 @@ require 'redis'
 require 'sinatra/activerecord'
 require 'open-uri'
 require 'nokogiri'
+require 'pry-byebug'
 
 Bundler.require(:default)                   # load all the default gems
 Bundler.require(Sinatra::Base.environment)  # load all the environment specific gems
