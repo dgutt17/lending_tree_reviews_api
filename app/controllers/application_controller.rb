@@ -5,7 +5,7 @@ class ApplicationController < Sinatra::Base
     'Home Page'
   end
 
-  error do |err|
-    puts "ERROR!!!!!!!!!!!!!!!!!"
+  error do
+    error 500, 'An unexpected error occurred on our servers.'
   end
 end
