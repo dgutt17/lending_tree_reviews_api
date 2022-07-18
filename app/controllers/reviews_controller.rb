@@ -1,12 +1,43 @@
 class ReviewsController < ApplicationController
-  get '/fetch_reviews_by_business_url/' do 
-    set_brand_id
-    response = lending_tree_api_wrapper.call
+  set :raise_errors, false
+  set :show_exceptions, false
 
-    parse_reviews(response)
+  get '/fetch_reviews_by_business_url/' do 
+    if valid_url_param
+      set_brand_id
+      response = lending_tree_api_wrapper.call
+
+      parse_reviews(response)
+    else
+      error 400, @error_message
+    end
   end
 
   private 
+
+  def valid_url_param  
+    url = params['url']
+    if !url.include?('lendingtree.com/reviews/business')
+      @error_message = 'Incorrect Base url in url param'
+      return false
+    end
+
+    name_and_id = url.split('/reviews/business/').last
+    name = name_and_id.first
+    id = name_and_id.last
+
+    if name !~ /^[a-zA-Z0-9\-]+$/
+      @error_message = 'Incorrectly formatted business name'
+      return false
+    end
+
+    if id !~ /\A\d+\Z/
+      @error_message = 'Business Id not present or not an integer'
+      return false
+    end
+
+    true
+  end
 
   def set_brand_id
     if business.nil?

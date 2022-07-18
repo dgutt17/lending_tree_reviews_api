@@ -4,4 +4,8 @@ class ApplicationController < Sinatra::Base
   get '/' do 
     'Home Page'
   end
+
+  error do |err|
+    puts "ERROR!!!!!!!!!!!!!!!!!"
+  end
 end
