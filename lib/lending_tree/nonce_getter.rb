@@ -14,6 +14,8 @@ module LendingTree
       redis.set(NONCE_KEY, nonce_object['nonce'])
 
       redis.close
+    rescue => e
+      error_logger.debug((["error class: #{e.class}, error message: #{e.message}"]+e.backtrace).join($/))
     end
 
     private

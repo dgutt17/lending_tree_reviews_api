@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
   end
   
   error do
-    error_logger.debug("error class: #{env['sinatra.error'].class}, error message: #{env['sinatra.error'].message}")
+    error_logger.debug((["error class: #{env['sinatra.error'].class}, error message: #{env['sinatra.error'].message}"]+env['sinatra.error'].backtrace).join($/))
     error 500, 'An unexpected error occurred on our servers.'
   end
 end
