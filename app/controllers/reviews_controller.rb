@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
       set_lending_tree_id_and_business_name
       set_brand_id
 
-      response = lending_tree_api_wrapper.call
+      response = http_request_to_lending_tree
 
       parse_reviews(response)
     else
@@ -34,15 +34,15 @@ class ReviewsController < ApplicationController
   end
 
   def get_brand_id_from_html
-    LendingTree::BrandIdGetter.new(params['url']).call
+    LendingTree::BrandIdGetter.call(params['url'])
   end
 
   def cache_brand_id
     Business.create!(lending_tree_id: @lending_tree_id, name: @business_name, brand_id: @brand_id)
   end
 
-  def lending_tree_api_wrapper
-    LendingTree::ApiWrapper.new(@brand_id)
+  def http_request_to_lending_tree
+    LendingTree::ApiWrapper.call(@brand_id)
   end
 
   def parse_reviews(response)

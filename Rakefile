@@ -9,6 +9,6 @@ end
 
 namespace :nonce do 
   task :getter do 
-    LendingTree::NonceGetter.new.call
+    LendingTree::NonceGetter.call
   end
 end
