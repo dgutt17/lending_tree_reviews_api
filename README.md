@@ -16,3 +16,22 @@ The `nonce` is an alphanumeric that is required in the `X-WP-Nonce` header of th
         2. Business Name is an alpanumeric that can also have dashes
         3. Business Id must have be an integer
       b. If any of the requirements fail you will receive a 400.
+
+## Example Request<br />
+`[ROOT]/fetch_reviews_by_business_url/?url=https://www.lendingtree.com/reviews/business/quickbridge/73465606`
+
+## Example Response Body<br />
+
+```
+{
+  [
+    {
+        "title": "Expedited Approval and Payment Process",
+        "star_rating": "4",
+        "text": "Expedited the approval and payment process allowing me to acquire funding pretty much immediately when I was ready.",<br />
+        "author": "Tim",
+        "date_of_review": "2022-07-15"
+    }
+  ]
+}
+```
