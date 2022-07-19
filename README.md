@@ -14,5 +14,5 @@ The `nonce` is an alphanumeric that is required in the `X-WP-Nonce` header of th
       a. REQUIREMENTS
         1. The url must contain: `lendingtree.com/reviews/business/business_name/business_id`
         2. Business Name is an alpanumeric that can also have dashes
-        3. Business Id must have be a integer
+        3. Business Id must have be an integer
       b. If any of the requirements fail you will receive a 400.
