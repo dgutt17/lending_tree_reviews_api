@@ -23,7 +23,7 @@ module URLHelper
     true
   end
 
-  def set_lending_tree_id_and_business_name
+  def set_lending_tree_id_and_business_name_from_url
     name_and_id = params['url'].split('/reviews/business/').last
     name_and_id = name_and_id.split('/')
 

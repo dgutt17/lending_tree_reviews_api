@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
   get '/fetch_reviews_by_business_url/' do 
     app_logger.info("#{env['REQUEST_METHOD']} #{env['REQUEST_PATH']}, params: #{params}")
     if valid_url_param
-      set_lending_tree_id_and_business_name
+      set_lending_tree_id_and_business_name_from_url
       set_brand_id
 
       response = http_request_to_lending_tree
