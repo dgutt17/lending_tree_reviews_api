@@ -1,4 +1,5 @@
 module LoggerHelper
+  LOGS = 'logs'
   STDOUT = 'logs/application.log'
   STDERR = 'logs/error.log'
 

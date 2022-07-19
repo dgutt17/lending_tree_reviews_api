@@ -20,8 +20,12 @@ class ReviewsParser
       title: review['title'],
       author: review['authorName'],
       star_rating: review['primaryRating']['value'],
-      date_of_review: review['submissionDateTime'],
+      date_of_review: remove_date_time_stamp(review['submissionDateTime']),
       text: review['text']
     }
+  end
+
+  def remove_date_time_stamp(datetime)
+    datetime.to_date.to_s
   end
 end
