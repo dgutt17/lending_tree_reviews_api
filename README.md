@@ -37,3 +37,11 @@ The `nonce` is an alphanumeric that is required in the `X-WP-Nonce` header of th
   ]
 }
 ```
+
+## API Tech Stack<br />
+1. Ruby 2.7.4<br />
+2. Sinatra 2.2.0<br />
+3. PostgreSQL 13.4<br />
+5. Redis 7.0.0<br />
+6. RSpec 3.11.0<br />
+7. Nokogiri 1.13.6<br />
