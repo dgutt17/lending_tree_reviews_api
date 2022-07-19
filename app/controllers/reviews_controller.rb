@@ -46,6 +46,6 @@ class ReviewsController < ApplicationController
   end
 
   def parse_reviews(response)
-    ReviewsParser.new(response).call
+    ReviewsParser.call(response)
   end
 end

@@ -1,4 +1,4 @@
-class ReviewsParser
+class ReviewsParser < ApplicationService
   attr_reader :response
 
   def initialize(response)
