@@ -30,10 +30,10 @@ The `nonce` is an alphanumeric that is required in the `X-WP-Nonce` header of th
     {
         "title": "Expedited Approval and Payment Process",
         "star_rating": "4",
-        "text": "Expedited the approval and payment process allowing me to acquire funding pretty much immediately when I was ready.",<br />
+        "text": "Expedited the approval and payment process allowing me to acquire funding pretty much immediately when I was ready.",
         "author": "Tim",
         "date_of_review": "2022-07-15"
-    }
+    },
   ]
 }
 ```
