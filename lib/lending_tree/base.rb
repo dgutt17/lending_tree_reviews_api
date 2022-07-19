@@ -1,5 +1,5 @@
 class Base
   include LoggerHelper
 
-  NONCE_KEY = 'nonce'
+  NONCE = 'nonce'
 end

@@ -11,7 +11,7 @@ RSpec.describe LendingTree::ApiWrapper, type: :lib do
     expect(api_wrapper.call.class).to eq(String)
   end
 
-  it 'has the correct value for the NONCE_KEY constant' do 
-    expect(LendingTree::ApiWrapper::NONCE_KEY).to eq('nonce')
+  it 'has the correct value for the NONCE constant' do 
+    expect(LendingTree::ApiWrapper::NONCE).to eq('nonce')
   end
 end

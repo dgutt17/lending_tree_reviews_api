@@ -11,7 +11,7 @@ module LendingTree
 
     def call
       raise 'test error'
-      redis.set(NONCE_KEY, nonce_object['nonce'])
+      redis.set(NONCE, nonce_object[NONCE])
 
       redis.close
     rescue => e
@@ -28,7 +28,7 @@ module LendingTree
       @nonce_object ||= begin
         hash = nil
         document.css(NONCE_ID_CSS).first.children.first.to_s.split.each do |char| 
-          hash = JSON.parse(char[0..char.length - 2]) if char.include?('nonce')
+          hash = JSON.parse(char[0..char.length - 2]) if char.include?(NONCE)
         end
 
         hash

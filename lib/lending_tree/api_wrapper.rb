@@ -19,7 +19,7 @@ module LendingTree
     end
 
     def nonce
-      @nonce ||= redis.get(NONCE_KEY)
+      @nonce ||= redis.get(NONCE)
     end
 
     def http_request

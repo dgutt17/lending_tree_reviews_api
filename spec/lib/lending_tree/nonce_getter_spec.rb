@@ -11,8 +11,8 @@ RSpec.describe LendingTree::NonceGetter, type: :lib do
     expect(LendingTree::NonceGetter::NONCE_ID_CSS).to eq('#jquery-core-js-extra')
   end
 
-  it 'has the correct value for the NONCE_KEY constant' do 
-    expect(LendingTree::NonceGetter::NONCE_KEY).to eq('nonce')
+  it 'has the correct value for the NONCE constant' do 
+    expect(LendingTree::NonceGetter::NONCE).to eq('nonce')
   end
 
   it 'grabs the correct nonce value from the businesses page' do 
