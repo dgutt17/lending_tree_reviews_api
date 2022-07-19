@@ -18,7 +18,9 @@ The `nonce` is an alphanumeric that is required in the `X-WP-Nonce` header of th
       b. If any of the requirements fail you will receive a 400.
 
 ## Example Request<br />
-`[ROOT]/fetch_reviews_by_business_url/?url=https://www.lendingtree.com/reviews/business/quickbridge/73465606`
+```
+[ROOT]/fetch_reviews_by_business_url/?url=https://www.lendingtree.com/reviews/business/quickbridge/73465606
+```
 
 ## Example Response Body<br />
 
