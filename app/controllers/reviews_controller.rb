@@ -5,7 +5,9 @@ class ReviewsController < ApplicationController
   get '/fetch_reviews_by_business_url/' do 
     app_logger.info("#{env['REQUEST_METHOD']} #{env['REQUEST_PATH']}, params: #{params}")
     if valid_url_param
+      set_lending_tree_id_and_business_name
       set_brand_id
+
       response = lending_tree_api_wrapper.call
 
       parse_reviews(response)
@@ -40,6 +42,14 @@ class ReviewsController < ApplicationController
     true
   end
 
+  def set_lending_tree_id_and_business_name
+    name_and_id = params['url'].split('/reviews/business/').last
+    name_and_id = name_and_id.split('/')
+
+    @lending_tree_id = name_and_id.last
+    @business_name = name_and_id.first
+  end
+
   def set_brand_id
     if business.nil?
       @brand_id = get_brand_id_from_html
@@ -50,16 +60,7 @@ class ReviewsController < ApplicationController
   end
 
   def business
-    @business ||= Business.find_by(name: business_name_from_url)
-  end
-
-  def business_name_from_url
-    @business_name_from_url ||= begin
-      name_and_id = params['url'].split('/reviews/business/').last
-      name = name_and_id.split('/').first
-
-      name
-    end
+    @business ||= Business.find_by(lending_tree_id: @lending_tree_id)
   end
 
   def get_brand_id_from_html
@@ -67,7 +68,7 @@ class ReviewsController < ApplicationController
   end
 
   def cache_brand_id
-    Business.create!(name: business_name_from_url, brand_id: @brand_id)
+    Business.create!(lending_tree_id: @lending_tree_id, name: @business_name, brand_id: @brand_id)
   end
 
   def lending_tree_api_wrapper

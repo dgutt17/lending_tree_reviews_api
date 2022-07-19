@@ -21,7 +21,7 @@ class ReviewsParser
       author: review['authorName'],
       star_rating: review['primaryRating']['value'],
       date_of_review: review['submissionDateTime'],
-      # text: review['text']
+      text: review['text']
     }
   end
 end

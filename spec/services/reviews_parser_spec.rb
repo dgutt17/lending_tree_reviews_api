@@ -40,7 +40,7 @@ RSpec.describe ReviewsParser, type: :service do
     end
   end
 
-  xit 'should have a text key' do 
+  it 'should have a text key' do 
     @parsed_reviews.each do |review|
       expect(review).to have_key('text')
     end
