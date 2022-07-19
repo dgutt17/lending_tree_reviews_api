@@ -11,6 +11,7 @@ module LendingTree
 
     def call
       redis.set(NONCE, nonce_object[NONCE])
+      app_logger.info("Setting nonce to #{nonce_object[NONCE]}")
 
       redis.close
     rescue => e

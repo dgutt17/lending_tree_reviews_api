@@ -1,13 +1,15 @@
 module LendingTree
   class ApiWrapper < Base
-    attr_reader :url
+    attr_reader :url, :brand_id
 
     def initialize(brand_id)
-      @url = create_url(brand_id)
+      @brand_id = brand_id
+      @url = create_url(@brand_id)
     end
 
     def call
       response = http_request
+      app_logger.info("Made an API request with this brand_id: #{brand_id}")
 
       response
     end
