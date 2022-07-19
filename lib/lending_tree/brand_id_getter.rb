@@ -11,7 +11,7 @@ module LendingTree
 
     def call 
       parsed_document = document.css(BRAND_ID_CSS)
-      raise Exceptions::NoBrandIdFound if parsed_document.length == 0
+      raise_no_brand_id_found_error if parsed_document.length == 0
 
       attributes = parsed_document.first.attributes
 
@@ -22,6 +22,10 @@ module LendingTree
 
     def document
       @document ||= Nokogiri::HTML(URI.open(url))
+    end
+
+    def raise_no_brand_id_found_error
+      raise Exceptions::NoBrandIdFound.new(url)
     end
   end
 end

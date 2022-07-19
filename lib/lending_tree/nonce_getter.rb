@@ -10,6 +10,7 @@ module LendingTree
     end
 
     def call
+      raise 'test error'
       redis.set(NONCE_KEY, nonce_object['nonce'])
 
       redis.close
