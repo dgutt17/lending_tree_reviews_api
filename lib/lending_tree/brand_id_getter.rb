@@ -10,7 +10,10 @@ module LendingTree
     end
 
     def call 
-      attributes = document.css(BRAND_ID_CSS).first.attributes
+      parsed_document = document.css(BRAND_ID_CSS)
+      raise Exceptions::NoBrandIdFound if parsed_document.length == 0
+
+      attributes = parsed_document.first.attributes
 
       attributes[BRAND_ID_ATTRIBUTE_NAME].value
     end
