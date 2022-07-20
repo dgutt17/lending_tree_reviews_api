@@ -7,8 +7,7 @@ module URLHelper
     end
 
     name_and_id = url.split('/reviews/business/').last
-    name = name_and_id.first
-    id = name_and_id.last
+    name, id = name_and_id.split('/')
 
     if name !~ /^[a-zA-Z0-9\-]+$/
       @error_message = 'Incorrectly formatted business name'
