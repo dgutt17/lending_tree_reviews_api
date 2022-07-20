@@ -10,6 +10,7 @@ module LendingTree
     def call
       response = http_request
       app_logger.info("Made an API request with this brand_id: #{brand_id}")
+      raise_api_wrapper_error(response) if response.code != 200
 
       response
     end
@@ -35,5 +36,10 @@ module LendingTree
     def redis
       @redis ||= Redis.new
     end
+
+    def raise_api_wrapper_error(response)
+      raise Exceptions::ApiWrapperError.new(response.message, response.code)
+    end
+
   end
 end

@@ -16,6 +16,11 @@ class ApplicationController < Sinatra::Base
     error_logger.debug("error class: #{env['sinatra.error'].class}, error message: #{env['sinatra.error'].message}")
     error 400, env['sinatra.error'].message
   end
+
+  error Exceptions::ApiWrapperError do 
+    error_logger.debug("error class: #{env['sinatra.error'].class}, error message: #{env['sinatra.error'].message}")
+    error 400, env['sinatra.error'].message
+  end
   
   error do
     error_logger.debug((["error class: #{env['sinatra.error'].class}, error message: #{env['sinatra.error'].message}"]+env['sinatra.error'].backtrace).join($/))
