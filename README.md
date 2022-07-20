@@ -7,6 +7,8 @@ The `brand_id` must be retrieved per business. We either parse the `brand_id` fr
 
 The `nonce` is an alphanumeric that is required in the `X-WP-Nonce` header of the API call. This changes everyday and we grab it from the main lendingtree reviews page. A script was written to grab the nonce and it will act as a cron job called everyday. We store the nonce in redis.
 
+We use rackup as the command to start the sinatra server.
+
 ## The API Specifications<br />
     1. Request Type: GET
     2. Route: ROOT/fetch_reviews_by_business_url/?url=url_for_a_review_page
