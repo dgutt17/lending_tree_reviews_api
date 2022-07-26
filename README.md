@@ -16,7 +16,7 @@ We use rackup as the command to start the sinatra server.
       a. REQUIREMENTS
         1. The url must contain: lendingtree.com/reviews/business/business_name/business_id.
         2. Business Name is an alpanumeric that can also have dashes.
-        3. Business Id must have be an integer.
+        3. Business Id must be an integer.
       b. If any of the requirements fail, you will receive a 400.
 
 ## Example Request<br />
